@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Plane Ticket Agency</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Create Flight</h2>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Enter Flight Information</div>
+                </div>
+                <div class="panel-body">
+                    <form action="create-flight" method="post" th:object="${flight}">
+                        <div class="form-group row">
+                            <label for="origin" class="col-md-3 col-form-label">Origin</label>
+                            <div class="col-md-9">
+                                <select th:field="*{origin}" id="origin" class="form-control">
+                                    <option value="" disabled selected>Select an origin</option>
+                                    <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="destination" class="col-md-3 col-form-label">Destination</label>
+                            <div class="col-md-9">
+                                <select th:field="*{destination}" id="destination" class="form-control">
+                                    <option value="" disabled selected>Select a destination</option>
+                                    <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="price" class="col-md-3 col-form-label">Price</label>
+                            <div class="col-md-9">
+                                <input th:field="*{price}" id="price" type="number" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="availableSeats" class="col-md-3 col-form-label">Number of available seats</label>
+                            <div class="col-md-9">
+                                <input id="availableSeats" th:field="*{availableSeats}" type="number" cssClass="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="flightDate" class="col-md-3 col-form-label">Flight Date</label>
+                            <div class="col-md-9">
+                                <input id="flightDate" th:field="*{departureDate}" type="date" cssClass="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="flightTime" class="col-md-3 col-form-label">Flight Time</label>
+                            <div class="col-md-9">
+                                <input id="flightTime" th:field="*{departureTime}" type="time" cssClass="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{js/jquery-1.11.1.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>

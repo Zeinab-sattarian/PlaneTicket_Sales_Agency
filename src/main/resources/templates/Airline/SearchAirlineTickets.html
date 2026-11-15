@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Plane Ticket Agency</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="col-md-offset-2">
+        <h2 class="text-center">Set Filters</h2>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Fill Any Search Field</div>
+            </div>
+            <div class="panel-body">
+                <form action="search-ticket" method="post" th:object="${flight}">
+                    <div class="form-group row">
+                        <label for="origin" class="col-md-3 col-form-label">Origin</label>
+                        <div class="col-md-9">
+                            <select th:field="*{origin}" id="origin" class="form-control" >
+                                <option value="" selected>-</option>
+                                <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="destination" class="col-md-3 col-form-label">Destination</label>
+                        <div class="col-md-9">
+                            <select th:field="*{destination}" id="destination" class="form-control" >
+                                <option value="" selected>-</option>
+                                <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="startDate" class="col-md-3 col-form-label">Start Date</label>
+                        <div class="col-md-9">
+                            <input id="startDate" th:field="*{startDate}" type="date" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="endDate" class="col-md-3 col-form-label">End Date</label>
+                        <div class="col-md-9">
+                            <input id="endDate" th:field="*{endDate}" type="date" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{js/jquery-1.11.1.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>

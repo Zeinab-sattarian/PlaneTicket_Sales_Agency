@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plane Ticket Agency</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    
+
+</head>
+<body>
+
+  <h1>
+      <th:text="${message}"/>
+  </h1>
+
+  <br>
+
+    <a href="/">
+
+        <button class="btn" >return</button>
+
+    </a>
+
+    <script th:src="@{js/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>
